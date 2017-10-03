@@ -11,10 +11,16 @@ import sys
 # sys.arg[3] will be the place name
 
 # set input and regular expression based on number of arguments
-if len(sys.argv) == 4:
-	strlat = sys.argv[1]
-	strlon = sys.argv[2]
-	strplacename = sys.argv[3]
+
+
+
+if True is True:
+	#strlat = sys.argv[1]
+	#strlon = sys.argv[2]
+        #strplacename = sys.argv[3]
+	strlat = "40.7"
+	strlon = "-74.0"
+	strplacename = "New York City"
 	try:
 		lat = float(strlat)
 	except ValueError:
