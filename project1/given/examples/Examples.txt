@@ -1,0 +1,104 @@
+# Can we trust numbers from Google Analytics?
+# -------------------------------------------
+
+# Look at Google Analytics for www.westernstates.org and www.westernstatesforum.org
+# Referer stats are questionable.
+# Look at referer stats for OSS.
+# Some are questionable. For instance, does Cabelas really link to OSS? We have found no such page from Cabelas.
+# Can we believe the stats?
+
+# How do check? What alternatives do we have?
+# -------------------------------------------
+
+# Start with Apache access logs.
+# Refer here for an explaination. See Common and Combined log formats: https://httpd.apache.org/docs/2.4/logs.html
+# We use: LogFormat "%h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined
+
+# Look at the file.
+# -----------------
+
+# big file - over 7 GB
+type access.log
+
+# there are nearly 30 million lines
+python linecount.py access.log
+
+# it can be helpful to look at a subset
+python head.py 10 access.log
+python head.py 1000 access.log > access.first1000.out
+
+# Does your homework version run this fast? Is it comparable to the prior script?
+python tail.py 10 access.log
+python tail.py 1000 access.log > access.last1000.out
+
+# Do a rough search to check for referers
+python grep.py dot.ca.gov access.log
+python grep.py westernstates.org access.log
+python grep.py cabelas.com access.log
+
+# Make some more robust searching and counting mechanisms.
+# --------------------------------------------------------
+
+# Match by regular expression group.
+# ----------------------------------
+
+# matches the client IP address
+python matchregexgroup.py "(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)" access.log
+
+# matches the timestamp, and sometimes more
+python matchregexgroup.py "\[(.*)\]" access.log
+
+# matches the timestamp and only the timestmap
+python matchregexgroup.py "\[([^\]]*)\]" access.log
+
+# matches the date in the timestamp
+python matchregexgroup.py "\[([^\:]*)\:" access.log
+
+# matches the date including hour in the timestamp
+python matchregexgroup.py "\[([^\:]*\:[^\:]*)\:" access.log
+
+# matches the request
+python matchregexgroup.py "(GET [^\"]*)" access.log
+
+# matches the request path
+python matchregexgroup.py "GET ([^\"]*)HTTP" access.log
+
+# matches the referer
+python matchregexgroup.py "[^\"]*\"[^\"]*\"[^\"]*\"([^\"]*)\"" access.log
+
+# Count and sort matches.
+# ------------------------
+
+# count by ip address
+python matchregexgroup.py "(\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b)" access.log | python groupandcountbyline.py > ipcounts.out
+
+# count by date
+python matchregexgroup.py "\[([^\:]*)\:" access.log | python groupandcountbyline.py > datecounts.out
+
+# count by date and hour
+python matchregexgroup.py "\[([^\:]*\:[^\:]*)\:" access.log | python groupandcountbyline.py > dateandhourcounts.out
+
+# count by referrer
+python matchregexgroup.py "[^\"]*\"[^\"]*\"[^\"]*\"([^\"]*)\"" access.log | python groupandcountbyline.py > referrercounts.out
+
+
+# More detail - important for the project.
+# ----------------------------------------
+python grep.py 153.90.200.203 access.log > access.153.90.200.203.out
+python grep.py "29/Mar/2017" access.153.90.200.203.out > access.153.90.200.203.2017-03-29.out
+
+# Look at access.153.90.200.203.2017-03-29.out in Notepad++
+# OSS Sessions: 
+# Define a session as a single user using the application for a continuous block of time. I.e., has a start and end.
+# You may need to use a cutoff to define inactivity - 20 minutes, for example.
+# The access log shows user activity in the form of attempted access and download of application files.
+# User sessions can be infered from the log files.
+
+# Show OSS in Chrome Developer Tools and show network traffic.
+# Show records related to an OSS session.
+# Show records related to an OSS mobile session.
+
+
+# Describe the project via the Canvas project page ...
+
+

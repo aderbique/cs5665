@@ -1,0 +1,25 @@
+1. Route A: 80 highway - 395 highway - 44 highway with 37 towns along side.
+
+Route B: 80 highway - 5 highway with 59 towns along side.
+
+2. Route A looks like a better choice as it's a more direct route. Looking at the cameras, both routes appear to have flowing traffic.  The altitude gains and losses make route B look more desirable as well as less road construction on route B. That being said, It appears route A is going through the mountains whereas route B has more towns. (Could mean more traffic but could be the safer route to take).
+
+3.
+
+Route Directions
+
+Altitude changes
+
+Distance
+
+Road Cameras (To check traffic flow)
+
+4.
+
+Ability to change routes
+
+Ability to avoid highways
+
+Ability to avoid toll roads (There's several in California)
+
+5. Data Science can prove useful in determining the best route to take. For instance, if you have a direct route but it goes through the mountains and the speed limit is 60mph, it might be worth taking a more indirect, longer route where speed limit is 80mph. Decisions like this are made possible with data provided from real user cases.
