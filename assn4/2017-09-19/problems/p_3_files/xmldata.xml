@@ -1,0 +1,125 @@
+<html>
+        <head>
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        	<title>Western Region Errors Page</title>
+
+        	<link href='http://fonts.googleapis.com/css?family=Scada:400,700' rel='stylesheet' type='text/css'>
+                <link rel="stylesheet" type="text/css" href="//code.jquery.com/ui/1.10.4/themes/cupertino/jquery-ui.css" />
+                <link href="/css/weatherstyle.css" rel="stylesheet" type="text/css" />
+                <link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+
+<script type="text/javascript">
+    var arrTracker = ['trackerName1', 'trackerName2']; // tracker names
+    
+    // tracking form submit
+    function trackFormSubmitWR(form, category, action, opt_label, opt_value) {
+      try {
+        for (var i = 0, ii = arrTracker.length; i < ii; i++) {
+            _gat._getTrackerByName(arrTracker[i])._trackEvent(category, action, opt_label, opt_value);
+        }
+        setTimeout("document.getElementById('"+form.id+"').submit();", 100);
+        return false;
+      }catch(err){}
+    }
+ 
+    // tracking link click
+    function recordOutboundLinkWR(link, category, action, opt_label, opt_value) {
+      try {
+        for (var i = 0, ii = arrTracker.length; i < ii; i++) {
+            _gat._getTrackerByName(arrTracker[i])._trackEvent(category, action, opt_label, opt_value);
+        }
+        setTimeout('document.location = "' + link.href + '"', 100);
+        return false;
+      }catch(err){}
+    }
+
+</script> 
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-ML4T5F');</script>
+<!-- End Google Tag Manager -->
+
+
+		<script id="_fed_an_ua_tag" type="text/javascript" src="/MappingFramework/js/federated-analytics.js?agency=DOC&sub­agency=NOAA&pua=UA-40745721-1"></script>
+
+<!--        	<script id="_fed_an_js_tag" type="text/javascript" src="/MappingFramework/js/federated-analytics.js?agency=DOC&subAgency=NOAA&pua=UA-40745721-1"></script> -->
+
+        </head>
+        <body>
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-ML4T5F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PRKH78" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PRKH78');</script>
+<!-- End Google Tag Manager -->
+
+
+
+                 <div class="header">
+                        <div class="header-content">
+                                <a href="http://www.weather.gov" class="header-nws"><img src="/css/images/logo.png" /></a>
+                                <a href="http://www.commerce.gov" class="header-doc"><img src="/css/images/header_doc.png" /></a>
+                                <div style="position:relative;top:5px;left10px;font-size:2.0em;font-family:'Scada', sans-serif;">Western Region Errors Page</div>
+                                <div style="position:relative;top:5px;left10px;font-size:1.0em;color:#aeaeae;letter-spacing:2.5px;">NOAA / NATIONAL WEATHER SERVICE</div>
+                        </div>
+                </div>
+
+                <div class="header-shadow">
+                        <div class="header-shadow-content"></div>
+                </div>
+        <div class="center" >
+            <div class="center-content">
+                                <div class="div-full">
+                                        <table style="float:right;margin-right:50px;">
+                                                <tr>
+                                                        <td><div id="permalink"></div></td>
+                                                        <td>&nbsp;&nbsp;&nbsp;</td>
+                                                        <td><a href="http://doc.gov" target="_blank">DOC</a></td>
+                                                        <td>&nbsp;&nbsp;&nbsp;</td>
+                                                        <td><a href="http://noaa.gov" target="_blank">NOAA</a></td>
+                                                        <td>&nbsp;&nbsp;&nbsp;</td>
+                                                        <td><a href="http://weather.gov" target="_blank">NWS</a></td>
+                                                        <td>&nbsp;&nbsp;&nbsp;</td>
+                                                        <td><a href="http://www.cio.noaa.gov/services_programs/info_quality.html" target="_blank">Info Quality</a></td>
+                                                        <td>&nbsp;&nbsp;&nbsp;</td>
+                                                        <td><a href="http://weather.gov/privacy.php" target="_blank">Privacy</a></td>
+                                                        <td>&nbsp;&nbsp;&nbsp;</td>
+                                                        <td><a href="mailto:W-wrh.Webmaster@noaa.gov?subject=general_feedback">Feedback</a></td>
+                                                </tr>
+                                        </table>
+                                        <ol>
+                                                <li>Error 403 is HTTP_FORBIDDEN ==> Captured at: 2017-10-03 23:30:55 UTC</li><br><li>To let us know of issues, or if you have questions, contact or email us at: <a href="mailto:w-wrh.webmaster@noaa.gov">w-wrh.webmaster@noaa.gov</a></li><hr><font size='4' color='red'>&nbsp; Please clear the 'cache' (in particular the 'cookies') and try again.<font><br><br>
+			&nbsp; How To Clear Web Browser Cache (i.e. Forecast Pages Not Updating)<br>&nbsp; 
+			<a href='/wrh/faq/browser-cache-clear.php' target='_blank'>http://www.wrh.noaa.gov/wrh/<wbr>faq/browser-cache-clear.php</a><hr>
+			<br><font size='3' color='green'>&nbsp; &nbsp; The following may be of help as well:<br>&nbsp; &nbsp; 
+			<a href="http://www.weather.gov/nwsexit.php?url=https://support.mozilla.org/en-US/kb/disable-third-party-cookies"
+			target="_blank">https://support.mozilla.org/<wbr>en-US/kb/disable-third-party-<wbr>cookies</a><br><br>&nbsp; &nbsp; 
+			In particular, this section may be of interest:<br>&nbsp; &nbsp; "If you are concerned about tracking by advertisers, <br>&nbsp; &nbsp; see also 
+			<a href="http://www.weather.gov/nwsexit.php?url=https://support.mozilla.org/en-US/kb/how-do-i-turn-do-not-track-feature"
+			target="_blank">How do I turn on the Do Not Track feature?</a>" </font><hr>
+			<font size='3' color='green'>If you have automated scripts, that are now unable to pull the data,<br>
+			Don't for get to:</font><br>1/ Set the <b>ACCEPT</b> header, <font size='3' color='green'>and</font> 2/ Add <b>user-agent</b> to the header!
+			
+
+
+
+                                        </ol>
+                                </div>
+                        </div>
+                </div>
+        </body>
+</html>
