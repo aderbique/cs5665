@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<dwml version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://graphical.weather.gov/xml/DWMLgen/schema/DWML.xsd">
+  <head>
+    <product srsName="WGS 1984" concise-name="time-series" operational-mode="official">
+      <title>NOAA's National Weather Service Forecast Data</title>
+      <field>meteorological</field>
+      <category>forecast</category>
+      <creation-date refresh-frequency="PT1H">2017-10-04T12:48:23Z</creation-date>
+    </product>
+    <source>
+      <more-information>https://graphical.weather.gov/xml/</more-information>
+      <production-center>Meteorological Development Laboratory<sub-center>Product Generation Branch</sub-center></production-center>
+      <disclaimer>http://www.nws.noaa.gov/disclaimer.html</disclaimer>
+      <credit>https://www.weather.gov/</credit>
+      <credit-logo>https://www.weather.gov/logorequest</credit-logo>
+      <feedback>https://www.weather.gov/contact</feedback>
+    </source>
+  </head>
+  <data>
+    <location>
+      <location-key>point1</location-key>
+      <point latitude="32.99" longitude="-117.16"/>
+    </location>
+    <moreWeatherInformation applicable-location="point1">https://forecast-v3.weather.gov/point/32.99,-117.16</moreWeatherInformation>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p24h-n7-1</layout-key>
+      <start-valid-time>2017-10-04T08:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-04T20:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-05T08:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-05T20:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-06T08:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-06T20:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-07T08:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-07T20:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-08T08:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-08T20:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-09T08:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-09T20:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-10T08:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-10T20:00:00-07:00</end-valid-time>
+    </time-layout>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p24h-n6-2</layout-key>
+      <start-valid-time>2017-10-04T20:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-05T09:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-05T20:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-06T09:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-06T20:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-07T09:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-07T20:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-08T09:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-08T20:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-09T09:00:00-07:00</end-valid-time>
+      <start-valid-time>2017-10-09T20:00:00-07:00</start-valid-time>
+      <end-valid-time>2017-10-10T09:00:00-07:00</end-valid-time>
+    </time-layout>
+    <time-layout time-coordinate="local" summarization="none">
+      <layout-key>k-p3h-n36-3</layout-key>
+      <start-valid-time>2017-10-04T08:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-04T11:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-04T14:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-04T17:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-04T20:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-04T23:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T02:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T05:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T08:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T11:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T14:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T17:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T20:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-05T23:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-06T02:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-06T05:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-06T08:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-06T11:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-06T14:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-06T17:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-06T23:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-07T05:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-07T11:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-07T17:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-07T23:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-08T05:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-08T11:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-08T17:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-08T23:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-09T05:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-09T11:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-09T17:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-09T23:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-10T05:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-10T11:00:00-07:00</start-valid-time>
+      <start-valid-time>2017-10-10T17:00:00-07:00</start-valid-time>
+    </time-layout>
+    <parameters applicable-location="point1">
+      <temperature type="maximum" units="Fahrenheit" time-layout="k-p24h-n7-1">
+        <name>Daily Maximum Temperature</name>
+        <value>77</value>
+        <value>81</value>
+        <value>85</value>
+        <value>85</value>
+        <value>79</value>
+        <value>77</value>
+        <value>78</value>
+      </temperature>
+      <temperature type="minimum" units="Fahrenheit" time-layout="k-p24h-n6-2">
+        <name>Daily Minimum Temperature</name>
+        <value>55</value>
+        <value>56</value>
+        <value>61</value>
+        <value>60</value>
+        <value>59</value>
+        <value>59</value>
+      </temperature>
+      <weather time-layout="k-p3h-n36-3">
+        <name>Weather Type, Coverage, and Intensity</name>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions>
+          <value coverage="patchy" intensity="none" weather-type="fog" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions>
+          <value coverage="patchy" intensity="none" weather-type="fog" qualifier="none">
+            <visibility xsi:nil="true"/>
+          </value>
+        </weather-conditions>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+        <weather-conditions/>
+      </weather>
+      <conditions-icon type="forecast-NWS" time-layout="k-p3h-n36-3">
+        <name>Conditions Icons</name>
+        <icon-link>http://forecast.weather.gov/images/wtf/sct.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nskc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nskc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nskc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfg.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfg.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/few.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/nfew.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+        <icon-link>http://forecast.weather.gov/images/wtf/skc.jpg</icon-link>
+      </conditions-icon>
+    </parameters>
+  </data>
+</dwml>

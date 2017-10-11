@@ -1,0 +1,196 @@
+#############################
+# Chapter 4: Linear Algebra
+#############################
+
+# Following our author's "from scratch" examples:
+
+# Vectors
+# Use lists to represent.
+v = [1,2]
+w = [5,10]
+
+# Vector addition.
+# Try this:
+v + w
+
+# It doesn't work. v + w does list concatenation.
+# Lists are not vectors. But, lists can be used to represent vectors.
+# Try this:
+[v_i + w_i for v_i, w_i in zip(v,w)]
+
+# Here we use Python "list comprehension" to do vector addition via a one-liner.
+
+# What concerns should we have regarding this method of doing vector addition?
+
+# Examine the components:
+# Syntax of this example: [expression for item in list]
+# What does the following do?
+zip(v,w)
+
+# Make this into a method:
+def vector_add(v, w):
+    return [v_i + w_i for v_i, w_i in zip(v,w)]
+	
+	
+	
+# Now we can use our method directly:
+vector_add(v,w)
+
+# What happens here?
+u = [2,4,6]
+vector_add(v,u)
+
+# And here?
+vector_add(v,[])
+	
+# We can do substraction in a similar way:
+def vector_subtract(v, w):
+    return [v_i - w_i for v_i, w_i in zip(v,w)]
+	
+# Example subtraction:
+vector_subtract(v,w)
+
+# Extend vector addition to operate on a variable number of vectors.
+def vector_sum(vectors):
+    return reduce(vector_add, vectors)
+
+# Example:
+u=[2,4]
+vector_sum([u,v,w])
+
+# What does reduce do?
+# It applies a pairwise operator iteratively to a list.
+
+# Example:
+reduce((lambda x,y: x*y),[1,2,3,4,5])
+ 
+# What does lambda do?
+# It creates an anonymous (nameless) function.
+mult = lambda x,y: x*y
+mult(5,10)
+ 
+# Now we'll use list comprehension to do scalar vector multiplication.
+# Say we want to do something like: 2 * [1,2]
+[2*v_i for v_i in [1,2]]
+
+# Make it a function:
+def scalar_multiply(c, v):
+    return [c * v_i for v_i in v]
+
+# What does the following do?	
+def vector_mean(vectors):
+    n = len(vectors)
+    return scalar_multiply(1/n, vector_sum(vectors))
+	
+# The following fails:
+vector_mean(v)
+
+# It operates on a vector of vectors. But, is the result of the following correct? No - why does this happen?
+vector_mean([u,v,w])
+	
+# What is the dot product of two vectors?
+# What is [1,2].[5,10]?
+
+# Define dot product using list comprehension:
+def dot(v, w):
+    return sum(v_i * w_i for v_i, w_i in zip(v, w))
+
+dot(v,w)
+	
+# Next we'll do sum of squares - the sum of the squared values of a vector.
+# Why would we want to do this?
+
+# How do we do this with what we have already done?
+# Use the dot product of a vector with itself.
+
+def sum_of_squares(v):
+    return dot(v, v)
+
+sum_of_squares(v)
+
+# Now compute the magnitude (length) of a vector.
+def magnitude(v):
+    return math.sqrt(sum_of_squares(v))
+
+# Compute the "distance" between two vectors.
+# Why would we want to do this?
+def squared_distance(v, w):
+    return sum_of_squares(vector_subtract(v, w))
+
+def distance(v, w):
+   return math.sqrt(squared_distance(v, w))
+	
+# Talk about the efficiency (or lack-there-of) of what we are doing above ... in terms of coding, speed and memory.
+
+# ------------------------------------------------------------------------------------------------------------------
+
+# Now we will define matrices and related functions.
+
+# How should a matrix be defined?
+
+# Our text defines them as a list of lists - think of as a list of vectors. Potential problems?
+
+friendships = [[0, 1, 1, 0, 0, 0, 0, 0, 0, 0], # user 0
+               [1, 0, 1, 1, 0, 0, 0, 0, 0, 0], # user 1
+               [1, 1, 0, 1, 0, 0, 0, 0, 0, 0], # user 2
+               [0, 1, 1, 0, 1, 0, 0, 0, 0, 0], # user 3
+               [0, 0, 0, 1, 0, 1, 0, 0, 0, 0], # user 4
+               [0, 0, 0, 0, 1, 0, 1, 1, 0, 0], # user 5
+               [0, 0, 0, 0, 0, 1, 0, 0, 1, 0], # user 6
+               [0, 0, 0, 0, 0, 1, 0, 0, 1, 0], # user 7
+               [0, 0, 0, 0, 0, 0, 1, 1, 0, 1], # user 8
+               [0, 0, 0, 0, 0, 0, 0, 0, 1, 0]] # user 9
+
+# What are the rows and what are the columns?
+# The matrix above is symmetric. Mixing up the rows and columns might not be obvious.
+# Try the following:
+
+M = [ [1,2] , [3,4], [5,6] ]
+
+# How do we reference the matrix element containing the 2?
+
+M[1][2]
+
+# Could we use a single list to represent a matrix?
+# Could we use a dictionary?
+# Why might we consider doing this? Sparse matrices ...
+
+# How might we represent a three-dimensional array? List of list of lists?
+
+# Some matrix methods.
+
+# Get the dimensions / shape of a matrix.
+def shape(A):
+    num_rows = len(A)
+    num_cols = len(A[0]) if A else 0
+    return num_rows, num_cols
+	
+def get_row(A, i):
+    return A[i]
+    
+def get_column(A, j):
+    return [A_i[j] for A_i in A]
+
+def make_matrix(num_rows, num_cols, entry_fn):
+    return [[entry_fn(i, j) for j in range(num_cols)]
+            for i in range(num_rows)]  	
+
+def is_diagonal(i, j):
+    """1's on the 'diagonal', 0's everywhere else"""
+    return 1 if i == j else 0
+
+I5 = make_matrix(5, 5, is_diagonal)
+I2 = make_matrix(2, 2, is_diagonal)
+I100 = make_matrix(100, 100, is_diagonal)
+
+M10 = make_matrix(10,10,(lambda i,j:i*j))
+M5 = make_matrix(5,5,(lambda i,j:i*10+j))	
+	
+def matrix_add(A, B):
+    if shape(A) != shape(B):
+        raise ArithmeticError("cannot add matrices with different shapes")
+    num_rows, num_cols = shape(A)
+    def entry_fn(i, j): return A[i][j] + B[i][j]    
+    return make_matrix(num_rows, num_cols, entry_fn)
+	
+SUM=matrix_add(I5,M5)
