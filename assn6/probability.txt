@@ -1,0 +1,311 @@
+from __future__ import division
+from collections import Counter
+import math, random
+
+# Our author presents something similar to the following example:
+def random_cointoss():
+    return random.choice(["tails", "heads"])
+	
+# We can call it repeatedly to generate a sample:
+cointosses = [random_cointoss() for _ in range(100)]
+
+cointosses
+
+# Counting is easy with the Counter package:
+Counter(cointosses)
+
+# Repeat these two lines and look at the variability.
+cointosses = [random_cointoss() for _ in range(100)]
+Counter(cointosses)
+
+# We can plot the count, but doing so really isn't all that interesting ...
+
+from matplotlib import pyplot as plt
+
+child_counts = Counter(cointosses)
+xs = [i + 0.1 for i, _ in enumerate(child_counts.keys())]
+ys = child_counts.values()
+plt.bar(xs, ys)
+plt.title("Child Counts")
+plt.xlabel("child type")
+plt.ylabel("count")
+plt.xticks([i + 0.1 for i, _ in enumerate(child_counts.keys())],child_counts.keys())
+plt.show()
+	
+# Instead, let's repeat 100 times and look at the results.
+
+heads=[Counter([random_cointoss() for _ in range(100)])['heads'] for _ in range(100)]
+heads_counts=Counter(heads)
+xs = range(101)
+ys = [heads_counts[x] for x in xs]
+plt.bar(xs, ys)
+plt.axis([0,101,0,25])
+plt.title("Histogram of Heads Counts")
+plt.xlabel("# of Heads per 100")
+plt.ylabel("Count")
+plt.show()
+
+# Try 1000 iterations.
+heads=[Counter([random_cointoss() for _ in range(100)])['heads'] for _ in range(1000)]
+heads_counts=Counter(heads)
+xs = range(101)
+ys = [heads_counts[x] for x in xs]
+plt.bar(xs, ys)
+plt.axis([0,101])
+plt.title("Histogram of heads Counts")
+plt.xlabel("# of heads per 100")
+plt.ylabel("Count")
+plt.show()
+
+# 10000 iterations.
+heads=[Counter([random_cointoss() for _ in range(100)])['heads'] for _ in range(10000)]
+heads_counts=Counter(heads)
+xs = range(101)
+ys = [heads_counts[x] for x in xs]
+plt.bar(xs, ys)
+plt.axis([0,101])
+plt.title("Histogram of heads Counts")
+plt.xlabel("# of heads per 100")
+plt.ylabel("Count")
+plt.show()
+
+#100000 iterations.
+heads=[Counter([random_cointoss() for _ in range(100)])['heads'] for _ in range(100000)]
+heads_counts=Counter(heads)
+xs = range(101)
+ys = [heads_counts[x] for x in xs]
+plt.bar(xs, ys)
+plt.axis([0,101])
+plt.title("Histogram of Heads Counts")
+plt.xlabel("# of heads per 100")
+plt.ylabel("Count")
+plt.show()
+
+###########################################################################################################
+# Now, animate to look at a number of different results for samples and counts of 1000 cointosses.
+###########################################################################################################
+import matplotlib.pyplot as plt
+from matplotlib import animation
+
+fig=plt.figure()
+
+n=100 #Number of frames
+xs=range(101)
+ys=[0 for i in xs]
+barcollection = plt.bar(xs,ys)
+plt.axis([0,100,0,125])
+plt.title("Histograms of heads Counts")
+plt.xlabel("# of heads per 100")
+plt.ylabel("Frequency")
+
+def animate(i): 
+    heads=[Counter([random_cointoss() for _ in range(100)])['heads'] for _ in range(1000)]
+    heads_counts=Counter(heads)
+    ys = [heads_counts[x] for x in xs]
+    for j in xs:
+        barcollection[j].set_height(ys[j])
+
+anim=animation.FuncAnimation(fig,animate,repeat=False,blit=False,frames=n,
+                             interval=100)
+
+plt.show()
+###########################################################################################################
+
+
+
+###########################################################################################################
+# Next, watch the counts grow.
+###########################################################################################################
+import matplotlib.pyplot as plt
+from matplotlib import animation
+
+fig=plt.figure()
+
+n=2000 #Number of frames
+xs=range(101)
+ys=[0 for i in xs]
+barcollection = plt.bar(xs,ys)
+plt.axis([0,100,0,200])
+plt.title("Histogram of heads Counts")
+plt.xlabel("# of heads per 100")
+plt.ylabel("Frequency")
+
+def animate(i):
+    headscount=Counter([random_cointoss() for _ in range(100)])['heads']
+    ys[headscount]=ys[headscount]+1
+    for j in xs:
+        barcollection[j].set_height(ys[j])
+
+anim=animation.FuncAnimation(fig,animate,repeat=False,blit=False,frames=n,
+                             interval=1)
+
+plt.show()
+###########################################################################################################
+
+
+
+###########################################################################################################
+# Next, display relative frequencies/proportions.
+###########################################################################################################
+import matplotlib.pyplot as plt
+from matplotlib import animation
+
+fig=plt.figure()
+
+n=20000 #Number of frames
+xs=range(101)
+ys=[0 for i in xs]
+barcollection = plt.bar(xs,ys)
+plt.axis([0,100,0,0.1])
+plt.title("Distribution of heads Counts")
+plt.xlabel("# of heads per 100")
+plt.ylabel("Relative Frequency")
+
+def animate(i):
+    headscount=Counter([random_cointoss() for _ in range(100)])['heads']
+    ys[headscount]=ys[headscount]+1
+    for j in xs:
+        barcollection[j].set_height(ys[j]/float(i+1))
+
+anim=animation.FuncAnimation(fig,animate,repeat=False,blit=False,frames=n,
+                             interval=1)
+
+plt.show()
+###########################################################################################################
+
+
+# Random Uniform [0,1):
+random.random()
+
+# Can specify bounds:
+random.uniform(0,10)
+random.uniform(10,20)
+
+def uniform_pdf(x):
+    return 1 if x >= 0 and x < 1 else 0
+	
+def plot_uniform_pdf(plt):
+    xs = [x / 1000.0 for x in range(0, 1000)]
+    plt.plot(xs,[uniform_pdf(x) for x in xs])
+    plt.legend()
+    plt.axis([0,1,0,1.05])
+    plt.show() 	
+	
+plot_uniform_pdf(plt)
+
+def uniform_cdf(x):
+    "returns the probability that a uniform random variable is less than x"
+    if x < 0:   return 0    # uniform random is never less than 0
+    elif x < 1: return x    # e.g. P(X < 0.4) = 0.4
+    else:       return 1    # uniform random is always less than 1
+	
+def plot_uniform_cdf(plt):
+    xs = [x / 1000.0 for x in range(0, 1000)]
+    plt.plot(xs,[uniform_cdf(x) for x in xs])
+    plt.legend()
+    plt.axis([0,1,0,1])
+    plt.show() 	
+	
+plot_uniform_cdf(plt)
+	
+def normal_pdf(x, mu=0, sigma=1):
+    sqrt_two_pi = math.sqrt(2 * math.pi)
+    return (math.exp(-(x-mu) ** 2 / 2 / sigma ** 2) / (sqrt_two_pi * sigma))
+
+def plot_normal_pdfs(plt):
+    xs = [x / 10.0 for x in range(-50, 50)]
+    plt.plot(xs,[normal_pdf(x,sigma=1) for x in xs],'-',label='mu=0,sigma=1')
+    plt.plot(xs,[normal_pdf(x,sigma=2) for x in xs],'--',label='mu=0,sigma=2')
+    plt.plot(xs,[normal_pdf(x,sigma=0.5) for x in xs],':',label='mu=0,sigma=0.5')
+    plt.plot(xs,[normal_pdf(x,mu=-1)   for x in xs],'-.',label='mu=-1,sigma=1')
+    plt.legend()
+    plt.show()  	
+
+plot_normal_pdfs(plt)
+
+def normal_cdf(x, mu=0,sigma=1):
+    return (1 + math.erf((x - mu) / math.sqrt(2) / sigma)) / 2  
+
+def plot_normal_cdfs(plt):
+    xs = [x / 10.0 for x in range(-50, 50)]
+    plt.plot(xs,[normal_cdf(x,sigma=1) for x in xs],'-',label='mu=0,sigma=1')
+    plt.plot(xs,[normal_cdf(x,sigma=2) for x in xs],'--',label='mu=0,sigma=2')
+    plt.plot(xs,[normal_cdf(x,sigma=0.5) for x in xs],':',label='mu=0,sigma=0.5')
+    plt.plot(xs,[normal_cdf(x,mu=-1) for x in xs],'-.',label='mu=-1,sigma=1')
+    plt.legend(loc=4) # bottom right
+    plt.show()	
+
+plot_normal_cdfs(plt)
+
+def inverse_normal_cdf(p, mu=0, sigma=1, tolerance=0.00001):
+    """find approximate inverse using binary search"""
+    # if not standard, compute standard and rescale
+    if mu != 0 or sigma != 1:
+        return mu + sigma * inverse_normal_cdf(p, tolerance=tolerance) 
+    low_z, low_p = -10.0, 0            # normal_cdf(-10) is (very close to) 0
+    hi_z,  hi_p  =  10.0, 1            # normal_cdf(10)  is (very close to) 1
+    while hi_z - low_z > tolerance:
+        mid_z = (low_z + hi_z) / 2     # consider the midpoint
+        mid_p = normal_cdf(mid_z)      # and the cdf's value there
+        if mid_p < p:
+            # midpoint is still too low, search above it
+            low_z, low_p = mid_z, mid_p
+        elif mid_p > p:
+            # midpoint is still too high, search below it
+            hi_z, hi_p = mid_z, mid_p
+        else:
+            break
+    return mid_z
+	
+# Discuss one-tailed versus two-tailed. This is one-tailed.
+inverse_normal_cdf(0.0)
+inverse_normal_cdf(0.025)
+inverse_normal_cdf(0.005)
+inverse_normal_cdf(0.975)
+inverse_normal_cdf(0.995)
+
+
+def bernoulli_trial(p):
+    return 1 if random.random() < p else 0
+
+def binomial(p, n):
+    return sum(bernoulli_trial(p) for _ in range(n))
+	
+def make_hist(p, n, num_points):
+    data = [binomial(p, n) for _ in range(num_points)]
+    # use a bar chart to show the actual binomial samples
+    histogram = Counter(data)
+    plt.bar([x - 0.4 for x in histogram.keys()],
+            [v / num_points for v in histogram.values()],
+            0.8,
+            color='0.75')
+    mu = p * n
+    sigma = math.sqrt(n * p * (1 - p))
+    # use a line chart to show the normal approximation
+    xs = range(min(data), max(data) + 1)
+    ys = [normal_cdf(i + 0.5, mu, sigma) - normal_cdf(i - 0.5, mu, sigma) 
+          for i in xs]
+    plt.plot(xs,ys)
+    plt.show()
+	
+make_hist(0.5,10,100)
+make_hist(0.5,10,1000)
+make_hist(0.5,10,100000)
+
+
+make_hist(0.5,100,100)
+make_hist(0.5,100,1000)
+make_hist(0.5,100,100000)
+make_hist(0.5,100,1000000)
+
+
+# We can generate gaussian (normal) random variables too.
+random.gauss(0,1)
+
+# A quick look at the distribution:
+Counter([round(random.gauss(0,1),0) for i in range(1000000)])
+
+Counter([round(random.gauss(0,1),1) for i in range(1000000)])
+
+
+	
