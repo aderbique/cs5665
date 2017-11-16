@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+
 ######################
 # GetNDFDWeatherForPlace.py
 ######################
@@ -51,13 +54,13 @@ requeststr = "https://graphical.weather.gov/xml/sample_products/browser_interfac
 weatherstr = "http://www.wrh.noaa.gov/mesowest/getobextXml.php?sid=KMYF&num=72"
 
 weatherXML = requests.get(requeststr).text
-fn = "temperature/" + datetime.datetime.now().strftime("%Y%m%d%H%M") + "_temp.xml"
+fn = "/home/ec2-user/cs5665/project2/temperature/" + datetime.datetime.now().strftime("%Y%m%d%H%M") + "_temp.xml"
 file_handle = open(fn,"wb")
 file_handle.write(weatherXML)
 file_handle.close()
 
 weatherXML = requests.get(weatherstr).text
-fn = "weather/" + datetime.datetime.now().strftime("%Y%m%d%H%M") + "_weather.xml"
+fn = "/home/ec2-user/cs5665/project2/weather/" + datetime.datetime.now().strftime("%Y%m%d%H%M") + "_weather.xml"
 file_handle = open(fn,"wb")
 file_handle.write(weatherXML)
 file_handle.close()
