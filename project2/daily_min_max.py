@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # We will use ElementTree to parse the XML
 import xml.etree.ElementTree as ET
 import collections
