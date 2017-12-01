@@ -11,23 +11,26 @@ inc = {}
 #There are 112 hours in the span of the 16th - 30th
 #We will start at 7pm
 
- yrmth = "201711"
- day = 15
- hour = 19
- minutes = "00"
+yrmth = "201711"
+day = 15
+hour = 19
+minutes = "00"
   
 for x in range(0,111):
-  time_add = x * 3
-  hour = hour + time_add
+  hour = hour + 3
   if hour == 25:
-    hour = 0
+    hour = 1
     day = day + 1
     
   if hour < 10:
     hour_string = "0" + str(hour)
+  else:
+    hour_string = str(hour)
   #print "X is: " + str(x)
+  
+  
   fn = yrmth + str(day) + hour_string + minutes + "_temp.xml"
-  print fn
+  #print fn
   tree = ET.parse(fn)
   root = tree.getroot()
   for head in root.findall('data'):
@@ -35,29 +38,47 @@ for x in range(0,111):
       for params in data.findall('temperature'):
 	#for temp in params:
 	
-	
-	maxes = params.findall("[@type='maximum']")
+	maxes = params.findall("[@type='hourly']")
 	for val in maxes:
 	  max_list = []
 	  max_count = 0
+	  
+	  key_hour = hour
+	  key_day = day
+	  
 	  for vals in val.findall('value'):
-	    #print vals.text
-	    key = "201711" + str(x + max_count)
-	    if key not in max_temps:
-	       max_temps[key] = [0,0,0,0,0,0,0]
-	    list_of_temps = max_temps[key]
-	    list_of_temps[max_count] = int(vals.text)
-	    max_temps[key] = list_of_temps
+	    
+	    key_hour = key_hour + 3
+	    if key_hour == 25:
+	      key_hour = 1
+	      key_day = key_day + 1
+	      
+	    if key_hour < 10:
+	      key_hour_string = "0" + str(key_hour)
+	    else:
+	      key_hour_string = str(key_hour)
+	      
+	    key = "201711" + str(key_day) + key_hour_string  
+	    #print key, vals.text
+	    if key not in inc:
+	       inc[key] = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+	    list_of_temps = inc[key]
+	    if vals.text is None:
+	      val = 0
+	    else:
+	      val = int(vals.text)
+	    
+	    list_of_temps[max_count] = val
+	    inc[key] = list_of_temps
 	    max_count = max_count + 1
 	    
-	    
-	   
+#print inc	   
 
-#print "\nMaximum Temperatures"
-#print "\nDate, d0, d1, d2, d3, d4 ,d5, d6"
-#max_od = collections.OrderedDict(sorted(max_temps.items()))
-#for days in max_od:
-#  print days, max_od[days]
+print "\n3 hour predictions"
+print "\nDate, hh0,hr3,hr6,hr9,hr12,hr15,hr18,hr21,hr24,hr27,hr30,hr33,hr36,hr39,hr42,hr45,hr48,hr51,h54,hr57,hr60,hr63,hr66,hr69,hr72,hr75,hr78,hr81,hr84,hr87,hr90,hr93,hr96,hr99,hr102,hr105,hr108,hr111,hr114,hr117,hr120"
+pred_od = collections.OrderedDict(sorted(inc.items()))
+for hours in pred_od:
+  print hours, pred_od[hours]
   
   
   

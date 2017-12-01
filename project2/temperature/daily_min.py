@@ -1,3 +1,7 @@
+#lol
+
+
+
 #!/usr/bin/env python
 
 # We will use ElementTree to parse the XML
@@ -6,7 +10,8 @@ import collections
 from decimal import *
 import matplotlib.pyplot as plt
 import numpy as np
-import matplotlib.pyplot as plt; plt.rcdefaults()
+import os
+#import matplotlib.pyplot as plt; plt.rcdefaults()
 
 #max_temps = {"0Date": ["0 day","1 day","2 day","3 day",'4 day','5 day','6 day']}
 #min_temps = {"0Date": ["0 day","1 day","2 day","3 day",'4 day','5 day','6 day']}
@@ -22,60 +27,58 @@ for x in range(16,30):
   for head in root.findall('data'):
     for data in head:
       for params in data.findall('temperature'):
-	#for temp in params:
-	
-	
-	maxes = params.findall("[@type='maximum']")
-	for val in maxes:
-	  max_list = []
-	  max_count = 0
-	  for vals in val.findall('value'):
-	    #print vals.text
-	    key = "201711" + str(x + max_count)
-	    if key not in max_temps:
-	       max_temps[key] = [0,0,0,0,0,0,0]
-	    list_of_temps = max_temps[key]
-	    list_of_temps[max_count] = int(vals.text)
-	    max_temps[key] = list_of_temps
-	    max_count = max_count + 1
-	    
-	    
-	mins = params.findall("[@type='minimum']")
-	for val in mins:
-	  min_list = []
-	  min_count = 0
-	  for vals in val.findall('value'):
-	    #print vals.text
-	    key = "201711" + str(x + min_count)
-	    if key not in min_temps:
-	       min_temps[key] = [0,0,0,0,0,0,0]
-	    list_of_temps = min_temps[key]
-	    list_of_temps[min_count] = int(vals.text)
-	    min_temps[key] = list_of_temps
-	    min_count = min_count + 1    
-	    
-	    
-	    
-	    
-	  #maximum = temp.findall("[@type='maximum']")
-	  #print maximum.text
+  #for temp in params:  
+        maxes = params.findall("[@type='maximum']")
+  for val in maxes:
+    max_list = []
+    max_count = 0
+    for vals in val.findall('value'):
+      #print vals.text
+      key = "201711" + str(x + max_count)
+      if key not in max_temps:
+         max_temps[key] = [0,0,0,0,0,0,0]
+      list_of_temps = max_temps[key]
+      list_of_temps[max_count] = int(vals.text)
+      max_temps[key] = list_of_temps
+      max_count = max_count + 1
+      
+      
+  mins = params.findall("[@type='minimum']")
+  for val in mins:
+    min_list = []
+    min_count = 0
+    for vals in val.findall('value'):
+      #print vals.text
+      key = "201711" + str(x + min_count)
+      if key not in min_temps:
+         min_temps[key] = [0,0,0,0,0,0,0]
+      list_of_temps = min_temps[key]
+      list_of_temps[min_count] = int(vals.text)
+      min_temps[key] = list_of_temps
+      min_count = min_count + 1    
+      
+      
+      
+      
+    #maximum = temp.findall("[@type='maximum']")
+    #print maximum.text
     #print "iterating through temps"
     #if temps.get['type'] == "maximum":
     #  print "max found!"
     #  for maxes in temps:
-#	maximum = temps.attrib['value']
-#	print maximum
-print "Minimum temperatures"
-print "\nDate, d0, d1, d2, d3, d4 ,d5, d6"
+#  maximum = temps.attrib['value']
+#  print maximum
+print("Minimum temperatures")
+print("\nDate, d0, d1, d2, d3, d4 ,d5, d6")
 min_od = collections.OrderedDict(sorted(min_temps.items()))
 for days in min_od:
-  print days, min_od[days]
+  print(days, min_od[days])
 
-print "\nMaximum Temperatures"
-print "\nDate, d0, d1, d2, d3, d4 ,d5, d6"
+print("\nMaximum Temperatures")
+print("\nDate, d0, d1, d2, d3, d4 ,d5, d6")
 max_od = collections.OrderedDict(sorted(max_temps.items()))
 for days in max_od:
-  print days, max_od[days]
+  print(days, max_od[days])
   
   
   
@@ -116,33 +119,44 @@ for days in max_od:
     #errorall = (alist[1] + alist[2] + alist[3] + alist[4] + alist[5] + alist[6])/6
     new_max_od[days] = alist    
 
-print "\nMinimum errors for 1 day prediction, 6 day prediction, and overall error."
-print "\nDate, d0, d1, d2, d3, d4 ,d5, d6, e1, e2, e3, e4, e5, e6, eO"
+print("\nMinimum errors for 1 day prediction, 6 day prediction, and overall error.")
+print("\nDate, d0, d1, d2, d3, d4 ,d5, d6, e1, e2, e3, e4, e5, e6, eO")
 new_min_od = collections.OrderedDict(sorted(new_min_od.items()))
 for days in new_min_od:
-  print days, new_min_od[days]    
+  print(days, new_min_od[days])
 
-print "\nMaximum Errors for 1 day prediction, 6 day prediction, and overall error."
-print "\nDate, d0, d1, d2, d3, d4 ,d5, d6, e1, e2, e3, e4, e5, e6, eO"
+print("\nMaximum Errors for 1 day prediction, 6 day prediction, and overall error.")
+print("\nDate, d0, d1, d2, d3, d4 ,d5, d6, e1, e2, e3, e4, e5, e6, eO")
 new_max_od = collections.OrderedDict(sorted(new_max_od.items()))
 for days in new_max_od:
-  print days, new_max_od[days]
+  print(days, new_max_od[days])
 
 
 ############################
 #plotting part
-
+#min temp
 objects = ('D1','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','D14')
 y_pos = np.arange(len(objects))
 performance = [56,57,53,48,45,51,56,59,59,55,52,54,45,47]
 
 plt.bar(y_pos, performance, align='center', alpha=0.5)
-pt.xticks(y_pos, objects)
+plt.xticks(y_pos, objects)
 plt.ylabel('temperature F')
 plt.title('Minimum Temperatures over 14 day period San Diego')
 plt.show()
 
 
+
+#max temp
+objects = ('D1','D2','D3','D4','D5','D6','D7','D8','D9','D10','D11','D12','D13','D14')
+y_pos = np.arange(len(objects))
+performance = [77,72,73,74,74,83,91,88,83,77,72,65,72,69]
+plt.bar(y_pos, performance, align='center', alpha=0.5)
+plt.xticks(y_pos, objects)
+plt.ylabel('temperature F')
+plt.title('Maximum Temperatures over 14 day period San Diego')
+plt.show()
+#os.system("pause")
 
        
 """
